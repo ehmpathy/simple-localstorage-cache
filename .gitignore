@@ -1,0 +1,9 @@
+*.log
+.artifact
+.env
+.serverless
+.terraform
+.terraform.lock
+coverage
+dist
+node_modules

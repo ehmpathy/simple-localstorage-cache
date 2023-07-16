@@ -1,0 +1,90 @@
+{
+  "name": "simple-localstorage-cache",
+  "author": "ehmpathy",
+  "description": "A simple local-storage cache with time based expiration policies",
+  "version": "0.0.0",
+  "repository": "ehmpathy/simple-localstorage-cache",
+  "homepage": "https://github.com/ehmpathy/simple-localstorage-cache",
+  "keywords": [
+    "cache",
+    "localstorage",
+    "browser",
+    "browser cache",
+    "simple",
+    "simple cache"
+  ],
+  "bugs": "https://github.com/ehmpathy/simple-localstorage-cache/issues",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build:ts": "tsc -p ./tsconfig.build.json",
+    "commit:with-cli": "npx cz",
+    "fix:format:prettier": "prettier --write '**/*.ts' --config ./prettier.config.js",
+    "fix:format:terraform": "echo 'terraform not used'",
+    "fix:format": "npm run fix:format:prettier",
+    "fix:lint": "eslint -c ./.eslintrc.js src/**/*.ts --fix",
+    "build:clean": "rm dist/ -rf",
+    "build:compile": "tsc -p ./tsconfig.build.json",
+    "build": "npm run build:clean && npm run build:compile",
+    "test:commits": "LAST_TAG=$(git describe --tags --abbrev=0 @^ 2> /dev/null || git rev-list --max-parents=0 HEAD) && npx commitlint --from $LAST_TAG --to HEAD --verbose",
+    "test:types": "tsc -p ./tsconfig.build.json --noEmit",
+    "test:format:prettier": "prettier --parser typescript --check 'src/**/*.ts' --config ./prettier.config.js",
+    "test:format:terraform": "echo 'terraform not used'",
+    "test:format": "npm run test:format:prettier",
+    "prepublish": "npm run build",
+    "test:lint:deps": "npx depcheck -c ./depcheckrc.yml",
+    "test:lint:eslint": "eslint -c ./.eslintrc.js src/**/*.ts",
+    "test:lint": "npm run test:lint:eslint && npm run test:lint:deps",
+    "test:unit": "jest -c ./jest.unit.config.ts --forceExit --verbose --passWithNoTests",
+    "test:integration": "jest -c ./jest.integration.config.ts --forceExit --verbose --passWithNoTests",
+    "test:acceptance:locally": "npm run build && LOCALLY=true jest -c ./jest.acceptance.config.ts --forceExit --verbose --runInBand --passWithNoTests",
+    "test": "npm run test:commits && npm run test:types && npm run test:format && npm run test:lint && npm run test:unit && npm run test:integration && npm run test:acceptance:locally",
+    "test:acceptance": "npm run build && jest -c ./jest.acceptance.config.ts --forceExit --verbose --runInBand --passWithNoTests",
+    "prepush": "npm run test && npm run build",
+    "preversion": "npm run prepush",
+    "postversion": "git push origin HEAD --tags --no-verify"
+  },
+  "dependencies": {
+    "bottleneck": "2.19.5",
+    "type-fns": "0.8.1",
+    "uuid": "9.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0",
+    "@trivago/prettier-plugin-sort-imports": "2.0.4",
+    "@tsconfig/node-lts-strictest": "18.12.1",
+    "@types/jest": "29.2.4",
+    "@types/uuid": "9.0.0",
+    "@typescript-eslint/eslint-plugin": "5.46.1",
+    "@typescript-eslint/parser": "5.46.1",
+    "core-js": "3.26.1",
+    "cz-conventional-changelog": "3.3.0",
+    "declapract": "0.11.2",
+    "declapract-typescript-ehmpathy": "0.23.6",
+    "depcheck": "1.4.3",
+    "eslint": "8.30.0",
+    "eslint-config-airbnb-typescript": "17.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "husky": "7.0.2",
+    "jest": "29.3.1",
+    "jest-environment-jsdom": "29.6.1",
+    "prettier": "2.8.1",
+    "ts-jest": "29.0.3",
+    "ts-node": "10.9.1",
+    "typescript": "4.9.4",
+    "uuid": "^3.3.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
