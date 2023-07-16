@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/ehmpathy/simple-localstorage-cache/compare/v1.0.0...v1.0.1) (2023-07-16)
+
+
+### Bug Fixes
+
+* **deploy:** bump to overcome ghost npm version ([f7d6fb0](https://github.com/ehmpathy/simple-localstorage-cache/commit/f7d6fb016006bdea7535e16319987d0725daae7a))
+
 ## 1.0.0 (2023-07-16)
 
 
