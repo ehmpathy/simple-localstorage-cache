@@ -2,7 +2,7 @@
   "name": "simple-localstorage-cache",
   "author": "ehmpathy",
   "description": "A simple local-storage cache with time based expiration policies",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "repository": "ehmpathy/simple-localstorage-cache",
   "homepage": "https://github.com/ehmpathy/simple-localstorage-cache",
   "keywords": [
