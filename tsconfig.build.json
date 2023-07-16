@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src"
+  },
+  "exclude": [
+    "dist",
+    "coverage",
+    "node_modules",
+    "acceptance",
+    "provision",
+    "jest.*",
+    "prettier.*",
+    "commitlint.*",
+    "codegen.*",
+    "src/**/*.test.(ts|js)",
+    "src/**/__test_utils__/**/*.(ts|js)"
+  ]
+}
